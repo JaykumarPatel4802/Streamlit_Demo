@@ -126,7 +126,7 @@ def generate_summary():
     # compute predictions
     outputs = model.generate(**inputs, do_sample=True, max_length=max_output_length, early_stopping=True, num_beams=8, length_penalty=2.0, no_repeat_ngram_size=2, min_length=min_output_length)
     decoded_outputs = tokenizer.batch_decode(outputs, skip_special_tokens=True)[0]
-    predicted_summaries = [nltk.sent_tokenize(decoded_outputs.strip())
+    predicted_summaries = nltk.sent_tokenize(decoded_outputs.strip())
 
     st.session_state.summaries = predicted_summaries
 
